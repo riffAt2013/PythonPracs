@@ -1,7 +1,7 @@
 import math
 
 class Point:
-    # Class level attr
+    # Class level attr/variable
     co_ordinate_space = "Cartesian"
 
     # dunder method like this are called automatically by the interpreter 
@@ -38,6 +38,12 @@ print(a.data)
 print(a.co_ordinate_space)
 a.draw()
 print(a)
+
+# class level method calling is also allowed but you better understand the 
+# action of the passing of self argument here better as it takes the instance
+# as an argument clearly. i.e: a.draw("here it is taking the instance auto")
+# but Point.draw("here you are pointing clearly about which instance -> a")
+Point.draw(a)
 
 
 b = Point(12,1)
