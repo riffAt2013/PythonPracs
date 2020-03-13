@@ -1,3 +1,5 @@
+# I N C O M P L E T E
+
 board = [['X','X',''],['','O',''],['','S','']]
 
 print (r'Use "mid/left/right + up/mid/down" to put ticks on the specified positions')
