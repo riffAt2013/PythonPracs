@@ -2,7 +2,6 @@
 ## This supports not only operations on the front of the structure
 ## but also the back end. Hence obfuscating stacks and queues. For
 ## High Performance, list is out of the Question
-
 from collections import deque
 
 
@@ -77,4 +76,39 @@ def part03():
         except IndexError:
             break
 
-part03()
+"""rotating is a very powerful aspect of deque
+it supports both left and right rotation
+"""
+def part04():
+    data1 = deque(range(9))
+    print("Normal deque: ", data1)
+    
+    # rotate with a positive int makes a right rotation
+    # imagine dialling an old school telephone.
+    # 3 of the final elements are moved to the left.
+    # rotate function is inplace
+    data1.rotate(3)
+    print("Rotated right: ", data1)
+
+
+    data2 = deque(range(9))
+    # negative int makes a left rotation
+    #  3 values from the left makes a transition leftward
+    # and takes place of the right most values 
+    data2.rotate(-3)
+    print("rotated left: ", data2)
+
+
+
+# the most powerful part to me is the maxlen prop
+# it allows for C-array like capabilty to contain a fixed
+# amount of numbers
+def part05():
+    data = deque(maxlen=5)
+    for i in range(50):
+        # even if appending 50 numbers to the deque
+        # it only have size of 5, hence the final five is added only 
+        # the other elements are ommitted
+        data.append(i)
+
+    print(data)
