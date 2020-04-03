@@ -1,8 +1,10 @@
 # a demonstration of classmethods and how they differ from regular methods
 
+
 class Car:
 
     category = ["Hypercar", "Sportscar", "Familycar"]
+
     def __init__(self, year, first, last):
         self.year = year
         self.first = first
@@ -10,19 +12,19 @@ class Car:
 
     # regular mathods take one must-take args as "self"
     def getInfo(self):
-        print("{} {} from the year {}".format(self.first, self.last, self.year))
-
+        print("{} {} from the year {}".format(
+            self.first, self.last, self.year))
 
     # thats how a classmethod is different from regular methods
     # first it is decorator-ized with "classmethod"
     # second it takes a must-take arg in the form of cls
     # by this we can change the class level attribute values
     @classmethod
-    def category_inclusion (cls, categoryname):
+    def category_inclusion(cls, categoryname):
         if categoryname in cls.category:
             print("Error: name Already there bud!")
         else:
-            cls.category.append(categoryname) 
+            cls.category.append(categoryname)
 
     # best usage of class methods are for alternative constructors
     @classmethod
@@ -51,7 +53,7 @@ print(car1.__dict__)
 # own instance level attribute, the OG remains unchanged
 car1.category = ["japanese bomb"]
 print(car1.category)
-car2 = Car(1950,"Volkswagen", "Beetle")
+car2 = Car(1950, "Volkswagen", "Beetle")
 print(car2.category)
 
 # the only way to access class level attribute is via the class level
