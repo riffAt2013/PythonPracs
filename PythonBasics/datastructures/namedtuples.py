@@ -32,15 +32,41 @@ def ntuplevstuple():
     print(type(Point))
     
 
-def test():
-    Card = namedtuple("Card", "suit rank".split())
+def part01():
+    # named tuples are immutable just like tuples
+    person = namedtuple("person",  "name age")
+    pat = person(name = "Pat", age = "21" )
+
+    try:
+        pat.age = str(22)
+    except AttributeError as attr:
+        print(attr)
+
+
+    # named typle cant have python keyword as attribute name, nor repeating words
+    try:
+        namedtuple("person", "try person age")
+    except ValueError as identifier:
+        print(identifier)
+
+
+
+
+def part02():
     
-    suits = "spades diamond clubs hearts".split()
-    ranks = [str(n) for n in range(2, 11)] + "J Q K A".split() 
-    _cards = [Card(var1 ,var2) for var1 in suits
-                                for var2 in ranks]
+    class Vector():
+        def __init__(self, x, y):
+            self.x = x
+            self.y = y
+        
+        def __add__(self, other):
+            return Vector(self.x+other.x, self.y+ other.y)
 
-    for card in _cards:
-        print(card)
-
-test()
+        def __repr__(self):
+                return f"Vector({self.x},{self.y})"
+                
+    s = Vector(2, 3)
+    d = Vector(3, 4)
+    print(s+d)
+            
+part02()
